@@ -1,0 +1,7 @@
+<%= bootstrap_form_with model: @category, :html => { id: "post_form" } do |f| %>
+	<%= hidden_field_tag :user_id, current_user.id %>
+	<%= f.text_field :name, required: true %>
+	<%= f.radio_button :type_of_operation, 'income' %>INCOME<br>
+	<%= f.radio_button :type_of_operation, 'expense' %>EXPENSE
+  <%= f.submit "Submit" %>
+<% end %>

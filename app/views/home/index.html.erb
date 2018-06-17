@@ -1,0 +1,22 @@
+<% if !user_signed_in? %>
+	<%= render partial: 'user', collection: @users  %>
+<% else %>
+	<div id="creation_form" class="text-center">
+		<%= link_to "Create new category", new_category_path %>
+		<%= link_to "Create new expense", new_expense_path %>
+		<%= link_to "Create new income", new_income_path %>
+	</div>
+	<div id='categories'>
+		<%= render partial: 'category', collection: @categories  %>
+	</div>
+
+	<div id='expense'>
+		<h6>Expenses</h6>
+		<%= render partial: 'expense', collection: @expenses  %>
+	</div>
+
+	<div id='income'>
+		<h6>Incomes</h6>
+		<%= render partial: 'income', collection: @incomes  %>
+	</div>
+<% end %>

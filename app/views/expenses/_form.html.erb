@@ -1,0 +1,6 @@
+<%= bootstrap_form_with model: @expense, :html => { id: "expense_form" } do |f| %>
+	<%= hidden_field_tag :user_id, current_user.id %>
+	<%= f.number_field :sum, value: number_to_currency(f.object.sum.to_f, delimiter: '', unit: ''), step: 0.01, required: true %>
+	<%= f.select :category_id, options_from_collection_for_select(@category_params, :id, :name)%>
+  <%= f.submit "Submit" %>
+<% end %>

@@ -1,0 +1,15 @@
+<tr>
+	<td>
+		<%= transaction.category_id %>
+	</td>
+	<td>
+		<%= transaction.sum %>
+	</td>
+	<td>
+		created <%= distance_of_time_in_words_to_now(transaction.created_at) %> ago
+	</td>
+	<td>
+		<%= link_to "Edit", edit_transaction_path(transaction.id) %>|
+		<%= link_to "delete", transaction_path(transaction.id), method: :delete, data: {confirm: "Are you sure?" } %>
+	</td>
+</tr>

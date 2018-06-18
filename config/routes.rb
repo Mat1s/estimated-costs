@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
   root to: 'home#index'
   devise_for :users
-  
 	resources :categories
-	resources :expenses
-	resources :incomes
+	resources :transactions
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

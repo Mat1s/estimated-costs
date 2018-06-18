@@ -13,10 +13,15 @@
     <div class='container'>
       <div class='row'>
         <div class='col-md-12 col-lg-12'>
-          <div class="jumbotron">
+          <div class="well" style="background-color:#CDC8B1; padding: 15px">
             <%= render 'layouts/header'%>
           </div>
-          <%= yield %>
+          <div class='col-md-12 col-lg-12'>  
+            <%= yield %>
+          </div>
+          <div class="text-left">
+            <%= link_to "Back", root_url %>
+          </div>
         </div>
       </div>
     </div>

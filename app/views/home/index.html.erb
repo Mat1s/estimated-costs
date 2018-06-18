@@ -1,22 +1,61 @@
 <% if !user_signed_in? %>
-	<%= render partial: 'user', collection: @users  %>
+	<%= link_to "Sign_in", new_user_session_path %>
 <% else %>
-	<div id="creation_form" class="text-center">
-		<%= link_to "Create new category", new_category_path %>
-		<%= link_to "Create new expense", new_expense_path %>
-		<%= link_to "Create new income", new_income_path %>
-	</div>
-	<div id='categories'>
-		<%= render partial: 'category', collection: @categories  %>
-	</div>
-
-	<div id='expense'>
-		<h6>Expenses</h6>
-		<%= render partial: 'expense', collection: @expenses  %>
-	</div>
-
-	<div id='income'>
-		<h6>Incomes</h6>
-		<%= render partial: 'income', collection: @incomes  %>
-	</div>
+	<% if @categories %>
+		<div id='categories'>
+			<table class="table table-striped text-left">
+				<h4 class="text-center" style="color:#CDC9C9; padding:15px">Categories</h4>
+				<thed>
+					<tr>
+						<th>name</th>
+						<th>type of transaction</th>
+						<th>actions</th>
+					</tr>
+				</thed>
+				<tbody>
+					<%= render partial: 'category', collection: @categories  %>
+				</tbody>
+			</table>
+		</div>
+		<div class="text-left"><%= link_to "Create new category", new_category_path %></div>
+	<% else %>
+		<h5 class="text-left">You need to create new category</h5>
+	<% end %>
+	<hr>
+	<% if @transactions %>
+		<h4 class="text-center" style="color:#CDC9C9; padding:15px">Transactions</h4>
+		
+		<div class="text-left">
+			<%= link_to "Create new transaction", new_transaction_path %>
+		</div>
+		<div style="padding: 30px">
+			<%= form_tag(root_path, method: :get, bootstrap: {layout: "inline"}) do %>
+				<%= select_tag :category_id, options_from_collection_for_select(@categories, :id, :name)%>
+				<%= date_field_tag :min_time %>
+				<%= date_field_tag :max_time %>
+			  <%= submit_tag "search", name: nil %>
+			<% end %>
+		</div>
+		<% if @transactions %>
+			<div id='transactions'>
+				<table class="table table-striped text-left">
+						<thed>
+							<tr>
+								<th>type of transaction</th>
+								<th>sum</th>
+								<th>time of creation</th>
+								<th>actions</th>
+							</tr>
+						</thed>
+						<tbody>
+							<%= render partial: 'transaction', collection: @transactions %>
+						</tbody>
+				</table>		
+			</div>
+		<% else %>
+			<h5 class="text-center">No results</h5>
+		<% end %>
+	<% else %>
+		<h5 class="text-left">Create new transaction</h5>
+	<% end %>
 <% end %>

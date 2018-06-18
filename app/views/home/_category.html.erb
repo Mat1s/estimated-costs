@@ -1,6 +1,12 @@
-<%= category.name %>
-<%= category.user_id %>
-<%= category.type_of_operation %>
-<%= link_to "delete",category_path(category.id), method: :delete, data: { confirm: "Are you sure?" } %>
-<%= link_to "edit", edit_category_path(category.id) %>
-<hr>
+<tr>
+	<td>
+		<%= category.name %>
+	</td>
+	<td>
+		<%= category.type_of_transaction %>
+	</td>
+	<td>
+		<%= link_to "delete",category_path(category.id), method: :delete, data: { confirm: "Are you sure?" } %>|
+		<%= link_to "edit", edit_category_path(category.id) %>
+	</td>
+</tr>

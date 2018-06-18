@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+	before_action :authenticate_user!
 	def new
 		@category = Category.new
 		@type = ['incomes', 'expense']
@@ -37,7 +38,9 @@ class CategoriesController < ApplicationController
 	end
 
 	def destroy
-		@category = Category.find_by(id: params[:id])	
+		@category = Category.find_by(id: params[:id])
+		@transactions = Transaction.where(category_id: params[:id])
+		@transactions.each { |t| t.destroy }	
 		if @category.delete
 			redirect_to root_url
 		else 
@@ -48,6 +51,6 @@ class CategoriesController < ApplicationController
 
 	private
 		def category_params
-    	params.require(:category).permit(:type_of_operation, :user_id, :name)
+    	params.require(:category).permit(:type_of_transaction, :user_id, :name)
   	end
 end

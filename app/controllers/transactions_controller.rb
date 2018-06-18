@@ -54,8 +54,10 @@ class TransactionsController < ApplicationController
 	end
 
 	def category_params
-		@expenses = Category.select('name, id, type_of_transaction').where('type_of_transaction=? and user_id=?', "expense", current_user.id)
-		@incomes = Category.select('name, id, type_of_transaction').where('type_of_transaction=? and user_id=?', "income", current_user.id)
+		@type_of_categories = TypeOfCategory.all
+	# 	@type_of_categories = TypeOfCategory.select('type_of_categories.type_of_category as type_of_category').distinct.
+	# 												joins("left join categories on categories.type_of_category_id = type_of_categories.id").
+	# 												where('user_id=?', current_user.id)
 	end
 
 	def transaction_params

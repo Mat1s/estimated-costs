@@ -15,12 +15,17 @@
         <div class='col-md-12 col-lg-12'>
           <div class="well" style="background-color:#CDC8B1; padding: 15px">
             <%= render 'layouts/header'%>
+            <div class="container">
+              <% flash.each do |message_type, message| %>
+                <%= content_tag(:div, message, class: "alert alert-#{message_type}")%>
+              <% end %>
+            </div>
           </div>
           <div class='col-md-12 col-lg-12'>  
             <%= yield %>
           </div>
           <div class="text-left">
-            <%= link_to "Back", root_url %>
+            <%= link_to "back", root_url %>
           </div>
         </div>
       </div>

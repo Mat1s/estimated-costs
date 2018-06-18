@@ -2,14 +2,7 @@
 <%= bootstrap_form_with model: @transaction, :html => { id: "incomes_form" } do |f| %>
 	<%= hidden_field_tag :user_id, current_user.id %>
 	<%= f.number_field :sum, value: number_to_currency(f.object.sum.to_f, delimiter: '', unit: ''), step: 0.01, required: true %>
-	<%= f.select :category_id, options_from_collection_for_select(@expenses, :id, :name)%>
+	<%= f.select :category_id, option_groups_from_collection_for_select(@type_of_categories, :categories, :type_of_category, :id, :name)%>
   <%= f.submit "create expense" %>
 <% end %>
-<hr>
-<h4 class="text-center" id="income">Create income</h4>
-<%= bootstrap_form_with model: @transaction, :html => { id: "incomes_form" } do |f| %>
-	<%= hidden_field_tag :user_id, current_user.id %>
-	<%= f.number_field :sum, value: number_to_currency(f.object.sum.to_f, delimiter: '', unit: ''), step: 0.01, required: true %>
-	<%= f.select :category_id, options_from_collection_for_select(@incomes, :id, :name)%>
-  <%= f.submit "create income" %>
-<% end %>
+

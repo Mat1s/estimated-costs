@@ -11,23 +11,20 @@ class CategoriesController < ApplicationController
 		if @category.save
 			redirect_to root_path
     else
-    	redirect_to new_category_path
+    	render new_category_path
     end
 	end
 
 	def edit
-		@category = Category.new(category_params)
+		@category = Category.find(params[:id])
 		@category.user_id = params[:user_id]
 		if @category.save
 			redirect_to root_path
     else
-    	redirect_to new_category_path
+    	render new_category_path
     end
 	end
-	def edit
-		@category = Category.find(params[:id])	
-	end
-
+	
 	def update
 		@category = Category.find(params[:id])
 		if @category.update(category_params)

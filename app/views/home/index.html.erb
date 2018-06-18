@@ -31,8 +31,8 @@
 		<div style="padding: 30px">
 			<%= form_tag(root_path, method: :get, bootstrap: {layout: "inline"}) do %>
 				<%= select_tag :category_id, options_from_collection_for_select(@categories, :id, :name)%>
-				<%= date_field_tag :min_time %>
-				<%= date_field_tag :max_time %>
+				<%= date_field_tag :min_time, Date.today - 7.days %>
+				<%= date_field_tag :max_time, Date.today + 1.day %>
 			  <%= submit_tag "search", name: nil %>
 			<% end %>
 		</div>
@@ -41,6 +41,7 @@
 				<table class="table table-striped text-left">
 						<thed>
 							<tr>
+								<th>name of transaction</th>
 								<th>type of transaction</th>
 								<th>sum</th>
 								<th>time of creation</th>

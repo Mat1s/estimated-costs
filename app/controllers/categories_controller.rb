@@ -7,6 +7,7 @@ class CategoriesController < ApplicationController
 	def create
 		@category = Category.new(category_params)
 		@category.user_id = params[:user_id]
+		@category.add_type(params[:type_of_category])
 		if @category.save
 			redirect_to root_path
     else
@@ -26,6 +27,7 @@ class CategoriesController < ApplicationController
 	
 	def update
 		@category = Category.find(params[:id])
+		@category.add_type(params[:type_of_category])
 		if @category.update(category_params)
 			redirect_to root_url
 		else

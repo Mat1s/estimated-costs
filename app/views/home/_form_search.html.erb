@@ -1,0 +1,17 @@
+<div style="padding: 50px;">
+	<%= form_tag(root_path, method: :get, bootstrap: {layout: "inline"}) do %>
+		<div class="form-group">
+			<label for="category_id" >Category</label>
+			<%= select_tag :category_id, option_groups_from_collection_for_select(@type_of_categories, :active_categories, :type_of_category, :id, :name), class: "form-control" %>
+		</div>
+		<div class="form-group">
+			<label for="from" >From</label>
+			<%= date_field_tag :min_time, Date.today - 7.days,  class: "form-control" %>
+		</div>
+		<div class="form-group">
+			<label for="from" >To</label>
+			<%= date_field_tag :max_time, Date.today + 1.day,  class: "form-control" %>
+		</div>
+	  <%= submit_tag "search", name: nil,  class: "btn- btn-success form-control" %>
+	<% end %>
+</div>

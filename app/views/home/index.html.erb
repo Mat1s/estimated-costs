@@ -30,7 +30,7 @@
 		</div>
 		<div style="padding: 30px">
 			<%= form_tag(root_path, method: :get, bootstrap: {layout: "inline"}) do %>
-				<%= select_tag :category_id, options_from_collection_for_select(@categories, :id, :name)%>
+				<%= select_tag :category_id, option_groups_from_collection_for_select(@type_of_categories, :active_categories, :type_of_category, :id, :name)%>
 				<%= date_field_tag :min_time, Date.today - 7.days %>
 				<%= date_field_tag :max_time, Date.today + 1.day %>
 			  <%= submit_tag "search", name: nil %>

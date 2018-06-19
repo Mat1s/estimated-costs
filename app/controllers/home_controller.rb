@@ -3,6 +3,7 @@ class HomeController < ApplicationController
   
   def index
   	@categories = current_user.categories
+    @type_of_categories = TypeOfCategory.all
   	if params[:category_id]
       @transactions = Transaction.select('transactions.id as id, transactions.user_id as user_id, transactions.sum as sum, transactions.category_id , transactions.created_at as created_at, categories.name as name, categories.type_of_transaction as type').
         joins("left join categories on categories.id = transactions.category_id").

@@ -1,8 +1,8 @@
-<h4 class="text-center" id="expenses">Create expense</h4>
+<h4 class="text-center" id="expenses">Create transaction</h4>
 <%= bootstrap_form_with model: @transaction, :html => { id: "incomes_form" } do |f| %>
 	<%= hidden_field_tag :user_id, current_user.id %>
 	<%= f.number_field :sum, value: number_to_currency(f.object.sum.to_f, delimiter: '', unit: ''), step: 0.01, required: true %>
-	<%= f.select :category_id, option_groups_from_collection_for_select(@type_of_categories, :categories, :type_of_category, :id, :name)%>
-  <%= f.submit "create expense" %>
+	<%= f.select :category_id, option_groups_from_collection_for_select(@type_of_categories, :active_categories, :type_of_category, :id, :name)%>
+  <%= f.submit %>
 <% end %>
 

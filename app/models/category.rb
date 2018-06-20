@@ -6,9 +6,9 @@ class Category < ApplicationRecord
   # 
   def add_type(p)
   	if p == "income"
-  		self.type_of_category_id = 3
+  		self.type_of_category_id = 1
   	else
-  		self.type_of_category_id = 4
+  		self.type_of_category_id = 2
   	end
   end
 end

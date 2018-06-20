@@ -13,7 +13,10 @@ Devise.setup do |config|
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
   # config.secret_key = 'f2120a993bed325fb5520a41ee09d56d029c9f76b33077cff8ffd3db58a7578bfdc4cb8bce92ded4a8b3cffbfcb5c651248dc789a19ae12840bc021793516f0e'
-  config.secret_key = 'd560176596351d93cd0fc889496976111050c66b5ce0dc471c9435055b851e8aa8d2af393c67ac8baa47a1abfd919571410a1b6eedf4f754859c5dc9fedf0bf3'
+  if Rails.env.production?
+
+    config.secret_key = 'd560176596351d93cd0fc889496976111050c66b5ce0dc471c9435055b851e8aa8d2af393c67ac8baa47a1abfd919571410a1b6eedf4f754859c5dc9fedf0bf3'
+  end
   config.scoped_views = true
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,

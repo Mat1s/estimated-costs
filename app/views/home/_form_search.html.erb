@@ -2,7 +2,7 @@
 	<%= form_tag(root_path, method: :get, bootstrap: {layout: "inline"}) do %>
 		<div class="form-group">
 			<label for="category_id" >Category</label>
-			<%= select_tag :category_id, option_groups_from_collection_for_select(@type_of_categories, :active_categories, :type_of_category, :id, :name), class: "form-control" %>
+			<%= select_tag :category_id, option_groups_from_collection_for_select(@type_of_categories, :categories, :type_of_category, :id, :name), class: "form-control" %>
 		</div>
 		<div class="form-group">
 			<label for="from" >From</label>

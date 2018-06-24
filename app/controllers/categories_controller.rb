@@ -2,12 +2,13 @@ class CategoriesController < ApplicationController
 	before_action :authenticate_user!
 	def new
 		@category = Category.new
+		@types = TypeOfCategory.ids.to_a
 	end
 
 	def create
 		@category = Category.new(category_params)
 		@category.user_id = params[:user_id]
-		@category.add_type(params[:type_of_category])
+		# @category.add_type(params[:type_of_category])
 		if @category.save
 			redirect_to root_path
     else
@@ -49,6 +50,6 @@ class CategoriesController < ApplicationController
 
 	private
 		def category_params
-    	params.require(:category).permit(:type_of_transaction, :user_id, :name)
+    	params.require(:category).permit(:type_of_category_id, :user_id, :name)
   	end
 end

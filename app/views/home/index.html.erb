@@ -22,7 +22,7 @@
 		<h5 class="text-left">You need to create new category</h5>
 	<% end %>
 	<hr>
-	<% if @transactions %>
+	<% if @count_transactions > 0 %>
 		<h4 class="text-center" style="color:#CDC9C9; padding:15px">Transactions</h4>
 		
 		<div class="text-left">
@@ -52,6 +52,8 @@
 			<h5 class="text-center">No results</h5>
 		<% end %>
 	<% else %>
-		<h5 class="text-left">Create new transaction</h5>
+		<div class="text-left">
+			<%= link_to "Create new transaction", new_transaction_path %>
+		</div>
 	<% end %>
 <% end %>

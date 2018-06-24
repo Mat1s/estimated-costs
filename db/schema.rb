@@ -16,18 +16,18 @@ ActiveRecord::Schema.define(version: 2018_06_19_213150) do
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.string "type_of_transaction"
     t.string "name", null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "type_of_category_id"
+    t.index ["name", "user_id"], name: "index_uniqueness_category", unique: true
     t.index ["type_of_category_id"], name: "index_categories_on_type_of_category_id"
     t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.decimal "sum"
+    t.decimal "sum", null: false
     t.bigint "user_id"
     t.bigint "category_id"
     t.datetime "created_at", null: false

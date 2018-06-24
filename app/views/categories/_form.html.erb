@@ -3,8 +3,8 @@
 		<%= hidden_field_tag :user_id, current_user.id %>
 		<p><%= f.text_field :name, required: true, autofocus: true, placeholder: "category" %></p>
 		<div class="text-uppercase">
-			<%= f.radio_button :type_of_transaction, 'income', checked: true%>income  
-			<%= f.radio_button :type_of_transaction, 'expense' %>expense
+			<%= f.radio_button :type_of_category_id, @types.first, checked: true%>income  
+			<%= f.radio_button :type_of_category_id, @types.second, checked: true%>expense  
 		</div>
 	  <%= f.submit "Submit" %>
 	<% end %>
